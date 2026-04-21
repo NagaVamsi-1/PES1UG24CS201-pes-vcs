@@ -10,6 +10,37 @@
 #include <string.h>
 #include <assert.h>
 #include <stdlib.h>
+#include <sys/stat.h>
+#include <openssl/sha.h>
+#include <zlib.h>
+
+void write_object(void *data, size_t len) {
+    unsigned char hash[HASH_SIZE];
+    SHA1(data, len, hash);
+
+    char hex[HASH_SIZE * 2 + 1];
+    for (int i = 0; i < HASH_SIZE; i++)
+        sprintf(hex + i * 2, "%02x", hash[i]);
+
+    char dir[256], path[256];
+    snprintf(dir, sizeof(dir), ".pes/objects/%.2s", hex);
+    mkdir(dir, 0777);
+
+    snprintf(path, sizeof(path), "%s/%s", dir, hex + 2);
+
+    // compress
+    uLongf comp_len = compressBound(len);
+    unsigned char *comp = malloc(comp_len);
+    compress(comp, &comp_len, data, len);
+
+    FILE *f = fopen(path, "wb");
+    fwrite(comp, 1, comp_len, f);
+    fclose(f);
+
+    free(comp);
+
+    printf("Object written: %s\n", path);
+}
 
 void test_tree_roundtrip(void) {
     // Build a tree manually
@@ -35,6 +66,7 @@ void test_tree_roundtrip(void) {
     assert(rc == 0);
     assert(data != NULL);
     assert(len > 0);
+    write_object(data, len);
     printf("Serialized tree: %zu bytes\n", len);
 
     // Parse back
