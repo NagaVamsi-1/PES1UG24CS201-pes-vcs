@@ -24,21 +24,21 @@ It implements core concepts like:
 
 ### 1A — Test Objects Output
 
-![1A](screenshots/1A.png)
+![1A](Screenshots/1A.png)
 ### 1B — Object Store Structure
 
-![1B](screenshots/1B.png)
+![1B](Screenshots/1B.png)
 ---
 
 ## 🔹 Phase 2: Tree Objects
 
 ### 2A — Tree Test Output
 
-![2A](screenshots/2A.png)
+![2A](Screenshots/2A.png)
 
 ### 2B — Raw Tree Object (Binary View)
 
-![2B](screenshots/2B.png)
+![2B](Screenshots/2B.png)
 
 ---
 
@@ -46,11 +46,11 @@ It implements core concepts like:
 
 ### 3A — Init + Add + Status
 
-![3A](screenshots/3A.png)
+![3A](Screenshots/3A.png)
 
 ### 3B — Index File Content
 
-![3B](screenshots/3B.png)
+![3B](Screenshots/3B.png)
 
 ---
 
@@ -58,15 +58,15 @@ It implements core concepts like:
 
 ### 4A — Commit Log
 
-![4A](screenshots/4A.png)
+![4A](Screenshots/4A.png)
 
 ### 4B — Object Store Growth
 
-![4B](screenshots/4B.png)
+![4B](Screenshots/4B.png)
 
 ### 4C — HEAD and Branch Reference
 
-![4C](screenshots/4C.png)
+![4C](SCreenshots/4C.png)
 
 ---
 
